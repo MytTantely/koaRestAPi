@@ -19,7 +19,7 @@ app.get(`${BASE_URL}/companies/`, (req, res) => {
 
 })
 
-app.get(`${BASE_URL}/company/:id`, (req, res) => {
+app.get(`${BASE_URL}/company/:id`, (req, res, next) => {
 
     CB.get(`COMPANY::${req.params.id}`)
         .then(result => {
@@ -31,7 +31,19 @@ app.get(`${BASE_URL}/company/:id`, (req, res) => {
 
             res.send(data)
         })
-        .catch(err => console.log(err));
+        .catch(
+            err => {
+
+                let errorMessage = {
+                    status: 'error',
+                    message: err.message
+                }
+    
+                console.log(err);
+                res.status(500);
+                res.send(errorMessage);
+            }
+        );
 
 })
 

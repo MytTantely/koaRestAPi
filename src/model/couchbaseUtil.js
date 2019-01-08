@@ -29,7 +29,11 @@ function add(key, value) {
 };
 
 function get(key) {
-    return bucket.getAsync(key);
+    try{
+        return bucket.getAsync(key);
+    } catch(e){
+        console.log('error when calling GET');
+    }
 }
 
 function update(key, value, cas, retrieveLastVersion = false) {

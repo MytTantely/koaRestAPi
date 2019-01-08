@@ -65,6 +65,18 @@ router.get('/company/:id', async (ctx, next) => {
             }
 
             ctx.status = 200;
+        })
+        .catch( err => {
+
+            console.log('Err catched...');
+            // ctx.body = {
+            //     status: 'error',
+            //     message: err.message
+            // }
+
+            // ctx.status = 501;
+            // throw err;
+            ctx.throw(500,'Error Message');
         });
 });
 
