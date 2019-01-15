@@ -1,7 +1,8 @@
 var Promise = require('bluebird');
 
 var couchbase = Promise.promisifyAll(require('couchbase'));
-var cluster = new couchbase.Cluster('couchbase://localhost/');
+// var cluster = new couchbase.Cluster('couchbase://localhost/');
+var cluster = new couchbase.Cluster('couchbase://dbX.mytnet/');
 cluster.authenticate('Administrator', 'password');
 var bucket = cluster.openBucket('QWayDB');
 var N1qlQuery = couchbase.N1qlQuery;
