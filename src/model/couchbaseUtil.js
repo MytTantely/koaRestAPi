@@ -4,7 +4,7 @@ var couchbase = Promise.promisifyAll(require('couchbase'));
 // var cluster = new couchbase.Cluster('couchbase://localhost/');
 
 // this is for docker
-var cluster = new couchbase.Cluster('couchbase://dbX.mytnet/');
+var cluster = new couchbase.Cluster('couchbase://couchbase-server');
 
 cluster.authenticate('Administrator', 'password');
 var bucket = cluster.openBucket('QWayDB');
