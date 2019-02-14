@@ -1,3 +1,5 @@
+docker network create --driver bridge couchbase
+
 docker run --net=couchbase -p 3000:3000 qwaydocker/koarestapi 
 docker run -v here:/opt/couchbase/var --net=couchbase -d --name couchbase-server -p 8091-8094:8091-8094 -p 11210:11210 couchbase:community-6.0.0
 docker run --net=couchbase -p 4984:4984 -v /tmp:/tmp/config -d couchbase/sync-gateway:2.1.2-community /tmp/config/my-sg-config.json
