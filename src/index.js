@@ -47,6 +47,10 @@ app.get(`${BASE_URL}/company/:id`, (req, res, next) => {
 
 })
 
+app.get(`${BASE_URL}/FastDoneNext`, (req, res, next) => {
+    res.status = 200
+    res.send('FAST - DONE - NEXT')
+})
 // app.post(`${BASE_URL}/companies`, (req, res) => {
 //     console.log('POST IS CALLED')
 //     console.log(req.body)
