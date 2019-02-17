@@ -12,7 +12,7 @@ const CB = require('../src/model/couchbaseUtil');
 
 app.get(`${BASE_URL}/companies/`, (req, res) => {
 
-    let query = 'SELECT * FROM QWayDB';
+    let query = "SELECT * FROM QWayDB where type = 'company'";
     CB.getAll(query)
         .then(rows => res.send(rows.map(val => val.QWayDB)))
         .catch(err => console.log(err));
