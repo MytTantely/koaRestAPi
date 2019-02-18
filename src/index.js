@@ -47,6 +47,25 @@ app.get(`${BASE_URL}/company/:id`, (req, res, next) => {
 
 })
 
+app.get(`${BASE_URL}/company/email/:emailId`, (req, res, next) => {
+
+    console.log(`Calling ${BASE_URL}/company/email/${req.params.emailId}`)
+    let query = 
+        `SELECT * FROM QWayDB AS bucketQWDB WHERE bucketQWDB.type='company' AND ANY userQ IN bucketQWDB.users SATISFIES userQ.email = '${req.params.emailId}' END`
+    ;
+    CB.getAll(query)
+        .then(rows => { // FIXME NOT SURE HOW TO HANDLE MULTIPLE RESPONSE...
+            rows.map(val => {
+                let resp = {};
+                resp.status = "success"
+                resp.data = val.bucketQWDB;
+    
+                res.send(resp);
+            })
+        }) 
+        .catch(err => console.log(err));
+})
+
 app.get(`${BASE_URL}/FastDoneNext`, (req, res, next) => {
     res.status = 200
     res.send('FAST - DONE - NEXT')
