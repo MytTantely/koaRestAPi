@@ -1,10 +1,13 @@
 var Promise = require('bluebird');
 
 var couchbase = Promise.promisifyAll(require('couchbase'));
-// var cluster = new couchbase.Cluster('couchbase://localhost/');
 
-// this is for docker
-var cluster = new couchbase.Cluster('couchbase://couchbase-server');
+var cluster = null;
+if(process.argv[2] === 'local'){
+    cluster = new couchbase.Cluster('couchbase://localhost/');
+}else{
+    cluster = new couchbase.Cluster('couchbase://couchbase-server');
+}
 
 cluster.authenticate('Administrator', 'password');
 var bucket = cluster.openBucket('QWayDB');

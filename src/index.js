@@ -1,14 +1,19 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const port = 3000
+let port = null;
+if(process.argv[2] === 'local'){
+    port = 13000;
+}else{
+    port = 3000;
+}
 
 const BASE_URL = `/api/v1`;
 
 const CB = require('../src/model/couchbaseUtil');
 
-// app.use(bodyParser.urlencoded({extended: false}))
-// app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 
 app.get(`${BASE_URL}/companies/`, (req, res) => {
 
@@ -65,6 +70,27 @@ app.get(`${BASE_URL}/company/email/:emailId`, (req, res, next) => {
         }) 
         .catch(err => console.log(err));
 })
+
+app.put(`${BASE_URL}/company`, (req, res, next) => {
+    // check if param is valid FIRST
+
+    let aCompany = req.body.data;
+    let cas = req.body.cas; 
+
+    if(aCompany.id != undefined && aCompany.id != null){
+        delete aCompany[cas];
+        console.log('aCompany');
+        console.log(aCompany);
+        console.log('cas');
+        console.log(cas);
+        CB.update(aCompany.id, aCompany, cas);
+        res.send('Updated');
+    }else{
+
+    }
+    
+}
+);
 
 app.get(`${BASE_URL}/FastDoneNext`, (req, res, next) => {
     res.status = 200
