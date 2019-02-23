@@ -2,9 +2,9 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 let port = null;
-if(process.argv[2] === 'local'){
+if (process.argv[2] === 'local') {
     port = 13000;
-}else{
+} else {
     port = 3000;
 }
 
@@ -12,7 +12,7 @@ const BASE_URL = `/api/v1`;
 
 const CB = require('../src/model/couchbaseUtil');
 
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get(`${BASE_URL}/companies/`, (req, res) => {
@@ -43,7 +43,7 @@ app.get(`${BASE_URL}/company/:id`, (req, res, next) => {
                     status: 'error',
                     message: err.message
                 }
-    
+
                 console.log(err);
                 res.status(500);
                 res.send(errorMessage);
@@ -55,19 +55,19 @@ app.get(`${BASE_URL}/company/:id`, (req, res, next) => {
 app.get(`${BASE_URL}/company/email/:emailId`, (req, res, next) => {
 
     console.log(`Calling ${BASE_URL}/company/email/${req.params.emailId}`)
-    let query = 
+    let query =
         `SELECT * FROM QWayDB AS bucketQWDB WHERE bucketQWDB.type='company' AND ANY userQ IN bucketQWDB.users SATISFIES userQ.email = '${req.params.emailId}' END`
-    ;
+        ;
     CB.getAll(query)
         .then(rows => { // FIXME NOT SURE HOW TO HANDLE MULTIPLE RESPONSE...
             rows.map(val => {
                 let resp = {};
                 resp.status = "success"
                 resp.data = val.bucketQWDB;
-    
+
                 res.send(resp);
             })
-        }) 
+        })
         .catch(err => console.log(err));
 })
 
@@ -75,20 +75,17 @@ app.put(`${BASE_URL}/company`, (req, res, next) => {
     // check if param is valid FIRST
 
     let aCompany = req.body.data;
-    let cas = req.body.cas; 
+    let cas = req.body.cas;
 
-    if(aCompany.id != undefined && aCompany.id != null){
-        delete aCompany[cas];
-        console.log('aCompany');
-        console.log(aCompany);
-        console.log('cas');
-        console.log(cas);
-        CB.update(aCompany.id, aCompany, cas);
-        res.send('Updated');
-    }else{
-
+    if (aCompany.id != undefined && aCompany.id != null) {
+        aCompany.id - undefined;
     }
-    
+    console.log('aCompany');
+    console.log(aCompany);
+    console.log('cas');
+    console.log(cas);
+    CB.update(aCompany.id, aCompany, cas);
+    res.send('Updated');
 }
 );
 

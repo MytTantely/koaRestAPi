@@ -53,6 +53,7 @@ function update(key, value, cas, retrieveLastVersion = false) {
                 key = `COMPANY::${res.value}`;
                 console.log('REST...');
                 console.log(key);
+                value.id = key;
                 return bucket.upsertAsync(key, value, { 'cas': cas })
                     .catch(err => {
                         console.log('### Caught!' + err.code)
@@ -71,7 +72,7 @@ function update(key, value, cas, retrieveLastVersion = false) {
                     );
             })
             .catch(e => {
-                console.log('operation failed', err);
+                console.log('operation failed', e);
             })
     } else {
         return bucket.upsertAsync(key, value, { 'cas': cas })
