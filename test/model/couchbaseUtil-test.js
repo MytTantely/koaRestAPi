@@ -12,57 +12,57 @@ const CB = require('../../src/model/couchbaseUtil');
 // .catch( err => console.log(err));
 
 
-// CB.update('COMPANY::1', {
-//     "id": "COMPANY::1",
-//     "type": "company",
-//     "subType": "restaurant",
-//     "name": "Blue River Restaurant",
-//     "email": "leo@blue_river.com",
-//     "phone": "780-710-2550",
-//     "address": {
-//         "suite": "900",
-//         "streetNumber": "214",
-//         "streetName": "11 Avenue SW",
-//         "city": "Calgary",
-//         "province": "Alberta",
-//         "country": "Canada",
-//         "geo": {
-//             "lat": "-9.117047399999999",
-//             "lng": "38.7626105"
-//         }
-//     },
-//     "users": [
-//         {
-//             "firstName": "Leo",
-//             "lastName": "LeoLastName",
-//             "role": "Owner",
-//             "userName": "loganwolverine",
-//             "email": "loganwolverine@xmen.org",
-//             "password": "******"
-//         },
-//         {
-//             "firstName": "Wonder",
-//             "lastName": "Wolverine",
-//             "role": "User",
-//             "userName": "wonderwolverine",
-//             "email": "wonderwolverine@xmen.org",
-//             "password": "******"
-//         }
-//     ],
-//     "products": []
-// })
-// .then( result => console.log(result))
-// .catch( err => console.log(err));
+CB.update('COMPANY::130', {
+    "id": "COMPANY::130",
+    "type": "company",
+    "subType": "restaurant",
+    "name": "Blue River Restaurant v13.13.0",
+    "email": "leo@blue_river.com",
+    "phone": "780-710-2550",
+    "address": {
+        "suite": "900",
+        "streetNumber": "214",
+        "streetName": "11 Avenue SW",
+        "city": "Calgary",
+        "province": "Alberta",
+        "country": "Canada",
+        "geo": {
+            "lat": "-9.117047399999999",
+            "lng": "38.7626105"
+        }
+    },
+    "users": [
+        {
+            "firstName": "Leo",
+            "lastName": "LeoLastName",
+            "role": "Owner",
+            "userName": "loganwolverine",
+            "email": "loganwolverine@xmen.org",
+            "password": "******"
+        },
+        {
+            "firstName": "Wonder",
+            "lastName": "Wolverine",
+            "role": "User",
+            "userName": "wonderwolverine",
+            "email": "wonderwolverine@xmen.org",
+            "password": "******"
+        }
+    ],
+    "products": []
+})
+.then( result => console.log(result))
+.catch( err => console.log(err));
 
 
-CB.get('COMPANY::1')
-    .then(result => {
+// CB.get('COMPANY::1')
+//     .then(result => {
 
-        console.log("=====First CAS:")
-        let firstCas = result.cas;
-        console.log(firstCas);
-        console.log("===== ===== =====")
-        console.log(result);
+//         console.log("=====First CAS:")
+//         let firstCas = result.cas;
+//         console.log(firstCas);
+//         console.log("===== ===== =====")
+//         console.log(result);
 
 
         // CB.update('4', { 'x': 90, 'y': 270, 'z': 4500 }, firstCas)
@@ -85,7 +85,7 @@ CB.get('COMPANY::1')
         //             })
         //             .catch( err => console.log(err))
         //     });
-    })
+//    })
 
 
 
