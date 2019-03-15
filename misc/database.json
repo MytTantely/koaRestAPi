@@ -1,0 +1,29 @@
+[
+    {
+        "productName":"samosa",
+        "shopName":"Samosa Factory",
+        "price":1.00,
+        "geo":{
+            "lat": -33.87365, 
+            "long": 151.20689
+        }
+    },
+    {
+        "productName":"samosa",
+        "shopName":"Jerusalem Shawarma",
+        "price":1.25,
+        "geo":{
+            "lat": -33.89365, 
+            "long": 151.21689
+        }
+    },
+    {
+        "productName":"samosa",
+        "shopName":"Chickenclear Shawarma",
+        "price":1.30,
+        "geo":{
+            "lat": -33.97365, 
+            "long": 151.28689
+        }
+    }
+]

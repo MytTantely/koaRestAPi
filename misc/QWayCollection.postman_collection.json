@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "2135a748-ec17-4bef-9156-ba659b064e05",
+		"name": "QWayCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "UPDATE/INSERT a Company",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"type\": \"company\",\n        \"subType\": \"restaurant\",\n        \"name\": \"Blue River Restaurant\",\n        \"email\": \"leo@blue_river.com\",\n        \"phone\": \"780-710-2550\",\n        \"address\": {\n            \"suite\": \"900\",\n            \"streetNumber\": \"214\",\n            \"streetName\": \"11 Avenue SW\",\n            \"city\": \"Calgary\",\n            \"province\": \"Alberta\",\n            \"country\": \"Canada\",\n            \"geo\": {\n                \"lat\": \"-9.117047399999999\",\n                \"lng\": \"38.7626105\"\n            }\n        },\n        \"users\": [\n            {\n                \"firstName\": \"Test\",\n                \"lastName\": \"Owner\",\n                \"role\": \"Owner\",\n                \"userName\": \"loganwolverine\",\n                \"email\": \"test.owner@blue-river.com\",\n                \"password\": \"******\"\n            },\n            {\n                \"firstName\": \"Test\",\n                \"lastName\": \"User\",\n                \"role\": \"User\",\n                \"userName\": \"testuser\",\n                \"email\": \"test.user@blue-river.com\",\n                \"password\": \"******\"\n            }\n        ],\n        \"products\": []\n    }\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/company",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"company"
+					]
+				},
+				"description": "Update or insert a company."
+			},
+			"response": []
+		},
+		{
+			"name": "GET all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"type\": \"company\",\n        \"subType\": \"restaurant\",\n        \"name\": \"Blue River Restaurant\",\n        \"email\": \"leo@blue_river.com\",\n        \"phone\": \"780-710-2550\",\n        \"address\": {\n            \"suite\": \"900\",\n            \"streetNumber\": \"214\",\n            \"streetName\": \"11 Avenue SW\",\n            \"city\": \"Calgary\",\n            \"province\": \"Alberta\",\n            \"country\": \"Canada\",\n            \"geo\": {\n                \"lat\": \"-9.117047399999999\",\n                \"lng\": \"38.7626105\"\n            }\n        },\n        \"users\": [\n            {\n                \"firstName\": \"Test\",\n                \"lastName\": \"Owner\",\n                \"role\": \"Owner\",\n                \"userName\": \"loganwolverine\",\n                \"email\": \"test.owner@blue-river.com\",\n                \"password\": \"******\"\n            },\n            {\n                \"firstName\": \"Test\",\n                \"lastName\": \"User\",\n                \"role\": \"User\",\n                \"userName\": \"testuser\",\n                \"email\": \"test.user@blue-river.com\",\n                \"password\": \"******\"\n            }\n        ],\n        \"products\": []\n    }\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/companies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET id=100",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"type\": \"company\",\n        \"subType\": \"restaurant\",\n        \"name\": \"Blue River Restaurant v2.1.0.0\",\n        \"email\": \"leo@blue_river.com\",\n        \"phone\": \"780-710-2550\",\n        \"address\": {\n            \"suite\": \"900\",\n            \"streetNumber\": \"214\",\n            \"streetName\": \"11 Avenue SW\",\n            \"city\": \"Calgary\",\n            \"province\": \"Alberta\",\n            \"country\": \"Canada\",\n            \"geo\": {\n                \"lat\": \"-9.117047399999999\",\n                \"lng\": \"38.7626105\"\n            }\n        },\n        \"users\": [\n            {\n                \"firstName\": \"Test\",\n                \"lastName\": \"Owner\",\n                \"role\": \"Owner\",\n                \"userName\": \"loganwolverine\",\n                \"email\": \"test.owner@blue-river.com\",\n                \"password\": \"******\"\n            },\n            {\n                \"firstName\": \"Test\",\n                \"lastName\": \"User\",\n                \"role\": \"User\",\n                \"userName\": \"testuser\",\n                \"email\": \"test.user@blue-river.com\",\n                \"password\": \"******\"\n            }\n        ],\n        \"products\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/company/100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"company",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT with CAS",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"success\",\n    \"data\": {\n    \t\"id\": \"COMPANY::100\",\n        \"type\": \"company\",\n        \"subType\": \"restaurant\",\n        \"name\": \"Blue River Restaurant 110\",\n        \"email\": \"leo@blue_river.com\",\n        \"phone\": \"780-710-2550\",\n        \"address\": {\n            \"suite\": \"900\",\n            \"streetNumber\": \"214\",\n            \"streetName\": \"11 Avenue SW\",\n            \"city\": \"Calgary\",\n            \"province\": \"Alberta\",\n            \"country\": \"Canada\",\n            \"geo\": {\n                \"lat\": \"-9.117047399999999\",\n                \"lng\": \"38.7626105\"\n            }\n        },\n        \"users\": [\n            {\n                \"firstName\": \"Test\",\n                \"lastName\": \"Owner\",\n                \"role\": \"Owner\",\n                \"userName\": \"loganwolverine\",\n                \"email\": \"test.owner@blue-river.com\",\n                \"password\": \"******\"\n            },\n            {\n                \"firstName\": \"Test\",\n                \"lastName\": \"User\",\n                \"role\": \"User\",\n                \"userName\": \"testuser\",\n                \"email\": \"test.user@blue-river.com\",\n                \"password\": \"******\"\n            }\n        ],\n        \"products\": []\n    },\n    \"cas\":\"1552007709835788288\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/company",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"company"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
