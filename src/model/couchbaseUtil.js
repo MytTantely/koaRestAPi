@@ -82,12 +82,13 @@ function update(key, value, cas, retrieveLastVersion = false) {
 
                 if (err != undefined && err.code === errors.keyAlreadyExists && retrieveLastVersion === false) {
                     return new Promise((resolve, reject) => {
-                        return reject(409) /// need to return reject(409)put more generic error
+                        // return reject(409) /// need to return reject(409)put more generic error
+                        return reject(err)
                     })
                 }
 
                 return new Promise((resolve, reject) => {
-                    return reject(err) /// need to put more generic error
+                    return reject(err) //FIXME need to put more generic error Vs the one above
                 })
             }
             );

@@ -84,8 +84,12 @@ app.put(`${BASE_URL}/company`, (req, res, next) => {
     console.log(aCompany);
     console.log('cas');
     console.log(cas);
-    CB.update(aCompany.id, aCompany, cas);
-    res.send('Updated');
+    CB.update(aCompany.id, aCompany, cas)
+    .then( () => res.send('Updated'))
+    .catch( e => {
+        res.status(409)
+        res.send(e)
+    });
 }
 );
 
