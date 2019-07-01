@@ -29,3 +29,19 @@ and contains
     }
   }
 }
+
+or 
+
+{
+  "log": ["*"],
+  "databases": {
+    "db": {
+      "server": "http://couchbase-server:8091",
+      "bucket": "staging",
+      "username": "sync_gateway",
+      "password": "password",
+      "users": { "GUEST": { "disabled": false, "admin_channels": ["*"] } },
+      "num_index_replicas": 0
+    }
+  }
+}
