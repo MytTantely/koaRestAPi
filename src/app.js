@@ -1,110 +1,40 @@
-const conditional = require('koa-conditional-get');
-const etag = require('koa-etag');
-const Koa = require('koa');
-const app = new Koa();
-const Router = require('koa-router');
-const router = new Router({ prefix: '/api' });
-const bodyParser = require('koa-body')();
-const cors = require('@koa/cors');
-const cacheControl = require('koa-cache-control');
+'use strict'
+const Koa = require('koa')
+const bodyParser = require('koa-bodyparser')
+const koaLogger = require('koa-logger')
+const cors = require('koa2-cors')
 
-const CB = require('./model/couchbaseUtil');
+const products = require('./routes/products')
 
+// init
+const app = new Koa()
+app.use(koaLogger())
+app.use(bodyParser())
 
-// const etag = require('etag');
+app.use(cors({
+    origin: function (ctx) {
+      // if (ctx.url === '/test') {
+      //     return false;
+      // }
+      return '*'
+    },
+    exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+    maxAge: 5,
+    credentials: true,
+    allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowHeaders: ['Content-Type', 'Authorization', 'Accept']
+  }))
 
-// etag works together with conditional-get
-// app.use(cors());
+  app.use(products)
 
-let options = {
-    origin: '*',
-    exposeHeaders: 'ETag'
-};
-
-app.use(cors(options));
-
-app.use(cacheControl({
-    noCache: true
-}));
-
-app.use(conditional());
-app.use(etag());
-
-app
-    .use(router.routes())
-    .use(router.allowedMethods());
-
-app.listen(3000);
-console.log('listening on port 3000');
-
-// Create Routes for CRUD
-router.get('/', (ctx, next) => {
-    ctx.body = 'Hello Alyssa!';
-});
-
-router.get('/companies', async (ctx, next) => {
-
-    let query = 'SELECT * FROM testBucket WHERE type = "company"';
-    await CB.getAll(query)
-        .then(rows => ctx.body = rows.map( val => val.testBucket) )
-        .catch(err => console.log(err));
-});
-
-router.get('/company/:id', async (ctx, next) => {
-
-    await CB.get(`COMPANY::${ctx.params.id}`)
-        .then(result => {
-
-            console.log(result);
-            console.log('get a result');
-
-            ctx.body = {
-                status: 'success',
-                data: result.value,
-                cas: result.cas
-            }
-
-            ctx.status = 200;
-        })
-        .catch( err => {
-
-            console.log('Err catched...');
-            // ctx.body = {
-            //     status: 'error',
-            //     message: err.message
-            // }
-
-            // ctx.status = 501;
-            // throw err;
-            ctx.throw(500,'Error Message');
-        });
-});
-
-
-
-// ctx.set('ETag', etag('ctx.body'));
-router.post('/companies', bodyParser, async (ctx) => {
-
-    await CB.add(ctx.request.body.id, ctx.request.body)
-        .then(result => ctx.status = 201)
-        .catch(err => console.log(err));
-});
-
-router.put('/company/:id', bodyParser, async (ctx) => {
-
-    await CB.update(`COMPANY::${ctx.params.id}`, ctx.request.body.data, ctx.request.body.cas)
-        .then(result => ctx.status = 202)
-        .catch(errCode => {
-            ctx.status = errCode
-            ctx.body = {
-                message: "Failed to update!"
-            }
-        });
-});
-
-// Sample Data
-let companies = [
-    { id: 1, name: "MyT", employees: 2, startUp: true },
-    { id: 2, name: "Apple", employees: 25000, startUp: true },
-    { id: 3, name: "Google", employees: 35000, startUp: true }
-];
+  app.on('error', (err, ctx) => {
+    console.error('server error', err, ctx)
+  
+    ctx.status = error.HTTP_STATUS.InternalError
+    ctx.body = {
+      status: 'error',
+      message: `Please contact the administrator. ${err.message}`
+    }
+  })
+  
+  module.exports.app = app

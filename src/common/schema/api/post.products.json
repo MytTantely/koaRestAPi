@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "required": ["email", "email_verified", "name", "given_name", "family_name", "platform"],
+    "properties": {
+      "email": { "type": "string", "format": "email" },
+      "email_verified": { "type": "boolean" },
+      "name": { "type": "string" },
+      "given_name": { "type": "string" },
+      "family_name": { "type": "string" },
+      "platform": {"pattern": "(webapp|quilla|connect-ios|connect-android)"}
+    }
+  }
+  

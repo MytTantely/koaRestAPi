@@ -17,9 +17,9 @@ var errors = couchbase.errors;
 
 
 
-function getAll(queryString) {
+const getAll =  async queryString => {
     let query = N1qlQuery.fromString(queryString);
-    return bucket.queryAsync(query);
+    return await bucket.queryAsync(query);
     // .then( (rows, meta) => {
     //     for (row in rows) {
     //         // console.log(JSON.stringify(row));
