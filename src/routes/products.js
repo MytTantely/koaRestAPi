@@ -3,25 +3,44 @@
 
 const Router = require('koa-router')
 const router = new Router({
-  prefix: '/api/v1'
+    prefix: '/api/v1'
 })
 
-const CB = require('../model/couchbaseUtil');
+const CB = require('../model/dao/couchbaseUtil')
+const defs = require('../common/definitions')
+const postProductSchema = require('../common/schema/api/post.products.json')
+const { Validator } = require('../common/lib/validator')
 
-// const postIssueSchema = require('../../common/schema/restApi/post.issue')
+router.post('/products', async (ctx, next) => {
+    const payload = ctx.request.body
 
-// const { Validator } = require('../lib/helper/validator')
+    const schemaErrors = Validator.json(postProductSchema, payload)
 
-// const ValidationError = error.Err
+    let msg = 'products updated'
+    if (schemaErrors != null) {
+        console.error(schemaErrors)
+        msg = 'Some unexpected structure'
+    }
 
+    console.log(payload) //FIXME logger
+
+    ctx.status = defs.httpStatus.Created
+    ctx.body = {
+        message: msg
+    }
+})
+
+/**
+ * List of all products
+ */
 router.get('/products', async (ctx, next) => {
 
-const query = "SELECT q.* FROM QWayDB q where type = 'product'"    
-const rows = await CB.getAll(query)
-  ctx.status = 201
-  ctx.body = {
-    data: rows
-  }
+    const query = "SELECT q.* FROM QWayDB q where type = 'product'"
+    const rows = await CB.getAll(query)
+    ctx.status = 201
+    ctx.body = {
+        data: rows
+    }
 })
 
 module.exports = router.routes()

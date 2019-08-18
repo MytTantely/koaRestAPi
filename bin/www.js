@@ -33,7 +33,7 @@ const onError = (error) => {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      logger.error(bind + ' requires elevated privileges')
+      logger.error(bind + ' requires elevated privileges') // FIXME logger
       process.exit(1)
       break
     case 'EADDRINUSE':

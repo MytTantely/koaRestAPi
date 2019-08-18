@@ -1,10 +1,5 @@
-// const add = require('../../src/model/couchbaseUtil').add;
-// const get = require('../../src/model/couchbaseUtil').get;
-// const update = require('../../src/model/couchbaseUtil').update;
-// const getAll = require('../../src/model/couchbaseUtil').getAll;
 
-
-const CB = require('../../src/model/couchbaseUtil');
+const CB = require('../../src/model/dao/couchbaseUtil');
 
 
 // CB.add('4', {x:1,y:3})
