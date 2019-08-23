@@ -1,8 +1,8 @@
 'use strict'
 
 const _prefix = {
-  PRODUCT_FRUITS: 'PRODUCT::FRUITS',
-  STORE_GROCERY: 'STORE::GROCERY'
+  PRODUCT_FRUITS: 'PRODUCT::FRUITS::',
+  STORE_GROCERY: 'STORE::GROCERY::'
 }
 
 const _type = {

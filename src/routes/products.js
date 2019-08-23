@@ -10,7 +10,7 @@ const CB = require('../model/dao/couchbaseUtil')
 const defs = require('../common/definitions')
 const postProductSchema = require('../common/schema/api/post.products.json')
 const { Validator } = require('../common/lib/validator')
-
+const { ProductsService } = require('../model/services/products_service')
 router.post('/products', async (ctx, next) => {
     const payload = ctx.request.body
 
@@ -22,7 +22,8 @@ router.post('/products', async (ctx, next) => {
         msg = 'Some unexpected structure'
     }
 
-    console.log(payload) //FIXME logger
+    // console.log(payload) //FIXME logger
+    await ProductsService.saveAll(payload)
 
     ctx.status = defs.httpStatus.Created
     ctx.body = {

@@ -1,0 +1,160 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "CurrencySignPrice",
+    "category",
+    "currencySignPricePerUnit",
+    "date",
+    "name",
+    "price",
+    "pricePerUnit",
+    "storeId",
+    "subCategory",
+    "subType",
+    "type",
+    "unit"
+  ],
+  "properties": {
+    "CurrencySignPrice": {
+      "$id": "#/properties/CurrencySignPrice",
+      "type": "string",
+      "title": "The Currencysignprice Schema",
+      "default": "",
+      "examples": [
+        "cents"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "category": {
+      "$id": "#/properties/category",
+      "type": "string",
+      "title": "The Category Schema",
+      "default": "",
+      "examples": [
+        "fruits"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "currencySignPricePerUnit": {
+      "$id": "#/properties/currencySignPricePerUnit",
+      "type": "string",
+      "title": "The Currencysignpriceperunit Schema",
+      "default": "",
+      "examples": [
+        "$"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "date": {
+      "$id": "#/properties/date",
+      "type": "object",
+      "title": "The Date Schema",
+      "required": [
+        "end",
+        "start"
+      ],
+      "properties": {
+        "end": {
+          "$id": "#/properties/date/properties/end",
+          "type": "integer",
+          "title": "The End Schema",
+          "default": 0,
+          "examples": [
+            1597460354
+          ]
+        },
+        "start": {
+          "$id": "#/properties/date/properties/start",
+          "type": "integer",
+          "title": "The Start Schema",
+          "default": 0,
+          "examples": [
+            1565837954
+          ]
+        }
+      }
+    },
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "title": "The Name Schema",
+      "default": "",
+      "examples": [
+        "Apple, Gala"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "price": {
+      "$id": "#/properties/price",
+      "type": "integer",
+      "title": "The Price Schema",
+      "default": 0,
+      "examples": [
+        69
+      ]
+    },
+    "pricePerUnit": {
+      "$id": "#/properties/pricePerUnit",
+      "type": "number",
+      "title": "The Priceperunit Schema",
+      "default": 0.0,
+      "examples": [
+        3.33
+      ]
+    },
+    "storeId": {
+      "$id": "#/properties/storeId",
+      "type": "string",
+      "title": "The Storeid Schema",
+      "default": "",
+      "examples": [
+        "STORE::GROCERY::WALCAL1"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "subCategory": {
+      "$id": "#/properties/subCategory",
+      "type": "string",
+      "title": "The Subcategory Schema",
+      "default": "",
+      "examples": [
+        "apple"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "subType": {
+      "$id": "#/properties/subType",
+      "type": "string",
+      "title": "The Subtype Schema",
+      "default": "",
+      "examples": [
+        "grocery"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "type": {
+      "$id": "#/properties/type",
+      "type": "string",
+      "title": "The Type Schema",
+      "default": "",
+      "examples": [
+        "product"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "unit": {
+      "$id": "#/properties/unit",
+      "type": "string",
+      "title": "The Unit Schema",
+      "default": "",
+      "examples": [
+        "lb"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}
