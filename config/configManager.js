@@ -4,6 +4,8 @@ const fsReadFilePromise = promisify(fs.readFile)
 const { Validator } = require('../src/common/lib/validator')
 const configurationSchema = require('../src/common/schema/conf/configSchema.json')
 const merge = require('merge')
+
+const path = require('path')
 class ConfigManager {
     constructor() {
     }
@@ -14,8 +16,16 @@ class ConfigManager {
             // const envConfigPromise = fsReadFilePromise('envConfig.json', "utf8")
             // this.defaultConfig = await defaultConfigPromise
             // this.envConfig = await envConfigPromise
-            this.defaultConfig = require('./default/defaultConfig.json')
-            this.envConfig = require('./env/envConfig.json')
+
+            const jsonPathDefault = path.join(__dirname, '..', 'config', 'default', 'defaultConfig.json');
+            const jsonStringDefault = await fsReadFilePromise(jsonPathDefault, 'utf8');
+            this.defaultConfig = JSON.parse(jsonStringDefault)
+
+            const jsonPathEnv = path.join(__dirname, '..', 'config', 'env', 'envConfig.json');
+            const jsonStringEnv = await fsReadFilePromise(jsonPathEnv, 'utf8');
+            this.envConfig = JSON.parse(jsonStringEnv)
+            // this.defaultConfig = require('./default/defaultConfig.json')
+            // this.envConfig = require('./env/envConfig.json')
 
             const schemaEnvErrors = Validator.json(configurationSchema, this.envConfig)
             const schemaDefaultErrors = Validator.json(configurationSchema, this.defaultConfig)
@@ -27,7 +37,7 @@ class ConfigManager {
             }
 
             if (schemaDefaultErrors != null) {
-                msg = 'Some unexpected structure for defaultConfig.json'
+                const msg = 'Some unexpected structure for defaultConfig.json'
                 console.log(msg)
                 console.error(schemaDefaultErrors)
             }
