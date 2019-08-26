@@ -1,0 +1,10 @@
+{
+    "db":{
+        "login":"__Administrator__",
+        "password": "password",
+        "buckets": {
+            "main":"QWayDB",
+            "exception":"QWayDBException"
+        }
+    }
+}

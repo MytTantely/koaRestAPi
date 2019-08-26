@@ -1,0 +1,75 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/root.json",
+    "type": "object",
+    "title": "The Root Schema",
+    "required": [
+      "db"
+    ],
+    "properties": {
+      "db": {
+        "$id": "#/properties/db",
+        "type": "object",
+        "title": "The Db Schema",
+        "required": [
+          "login",
+          "password",
+          "buckets"
+        ],
+        "properties": {
+          "login": {
+            "$id": "#/properties/db/properties/login",
+            "type": "string",
+            "title": "The Login Schema",
+            "default": "",
+            "examples": [
+              "__Administrator__"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "password": {
+            "$id": "#/properties/db/properties/password",
+            "type": "string",
+            "title": "The Password Schema",
+            "default": "",
+            "examples": [
+              "password"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "buckets": {
+            "$id": "#/properties/db/properties/buckets",
+            "type": "object",
+            "title": "The Buckets Schema",
+            "required": [
+              "main",
+              "exception"
+            ],
+            "properties": {
+              "main": {
+                "$id": "#/properties/db/properties/buckets/properties/main",
+                "type": "string",
+                "title": "The Main Schema",
+                "default": "",
+                "examples": [
+                  "QWayDB"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "exception": {
+                "$id": "#/properties/db/properties/buckets/properties/exception",
+                "type": "string",
+                "title": "The Exception Schema",
+                "default": "",
+                "examples": [
+                  "QWayDBException"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        }
+      }
+    }
+  }

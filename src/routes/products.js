@@ -23,7 +23,8 @@ router.post('/products', async (ctx, next) => {
     }
 
     // console.log(payload) //FIXME logger
-    await ProductsService.saveAll(payload)
+    const service = new ProductsService()
+    await service.saveAll(payload)
 
     ctx.status = defs.httpStatus.Created
     ctx.body = {

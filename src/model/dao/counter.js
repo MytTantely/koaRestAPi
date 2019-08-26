@@ -1,20 +1,21 @@
-const { couchbasPromise } = require('../../common/lib/couchbasePromise')
+const { couchbasePromise } = require('../../common/lib/couchbasePromise')
 
 class CounterUtils {
-    constructor(bucket) {
+    constructor(bucket, inc = 1, initial = 900000000) {
         this._cluster = null
-        if (process.argv[2] === 'local') {
-            this._cluster = new couchbase.Cluster('couchbase://localhost/')
-        } else {
-            this._cluster = new couchbase.Cluster('couchbase://couchbase-server')
-        }
+        this._cluster = new couchbasePromise.Cluster('couchbase://localhost/')
+
+        // if (process.argv[2] === 'local') {
+        //     this._cluster = new couchbasePromise.Cluster('couchbase://localhost/')
+        // } else {
+        //     this._cluster = new couchbasePromise.Cluster('couchbase://couchbase-server')
+        // }
 
         this._cluster.authenticate('Administrator', 'password')
         this._bucket = this._cluster.openBucket(bucket)
 
-        // this.inc = 1
-        this.setInc(1)
-        this.setInitial(900000000)
+        this.setInc(inc)
+        this.setInitial(initial)
     }
 
     setInc(inc){
@@ -29,3 +30,5 @@ class CounterUtils {
         return await this._bucket.counterAsync(docIdDefs, this._inc, {initial: this._initial})
     }
 }
+
+module.exports = { CounterUtils }
