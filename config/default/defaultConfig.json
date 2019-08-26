@@ -1,7 +1,7 @@
 {
     "db":{
         "login":"__Administrator__",
-        "password": "password",
+        "password": "__password__",
         "buckets": {
             "main":"QWayDB",
             "exception":"QWayDBException"

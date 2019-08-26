@@ -3,13 +3,9 @@ const fs = require('fs')
 const fsReadFilePromise = promisify(fs.readFile)
 const { Validator } = require('../src/common/lib/validator')
 const configurationSchema = require('../src/common/schema/conf/configSchema.json')
-const jp = require('jsonpath')
-
-const _ = require('underscore')
-
+const merge = require('merge')
 class ConfigManager {
     constructor() {
-
     }
 
     async getConfig() {
@@ -35,38 +31,11 @@ class ConfigManager {
                 console.log(msg)
                 console.error(schemaDefaultErrors)
             }
-            // console.log(this.defaultConfig)
+
+            const merged = merge.recursive(true, this.defaultConfig, this.envConfig)
+            return merged
         } catch (error) {
             console.log(error)
-        }
-    }
-
-    _check() {
-        // const defaultKeys = Object.keys(this.defaultConfig)
-        // const envKeys = Object.keys(this.envConfig)
-        // console.log(this.defaultConfig)
-        // this._listOfKeys(this.defaultConfig, this.envConfig)
-
-        console.log(Object.keys(this.envConfig.db.password))
-        // for (const keyEnv of envKeys) {
-        //     // console.log(jp.query(this.envConfig, `$.${keyEnv}..*`))
-        //     this.defaultConfig[keyEnv] = this.envConfig[keyEnv]
-        //     // jp.query(this.envConfig, `$.${keyEnv}..*`)
-        //     // console.log(keyEnv)
-        // }
-        console.log(' = = = = = = = = = = = = = = ')
-
-        // console.log(this.defaultConfig)
-
-    }
-
-    _listOfKeys(_objDest, _objOrigin) {
-        const keysOrigin = Object.keys(_objOrigin)
-        console.log(keysOrigin)
-        console.log('= = = = = = = = = = = = = = = = =')
-        for (const eachKeyOrigin of keysOrigin) {
-            this._listOfKeys( _objDest[eachKeyOrigin], _objOrigin[eachKeyOrigin])
-            _objDest[eachKey] = _objOrigin[eachKey]
         }
     }
 }
