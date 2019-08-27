@@ -20,6 +20,8 @@
     "koa-router": "^7.4.0",
     "koa2-cors": "2.0.6",
     "merge": "^1.2.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "winston": "^3.2.1",
+    "winston-couchbase-2": "^1.0.0"
   }
 }

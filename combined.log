@@ -1,0 +1,24 @@
+{"message":"logger.test.js# Test info","level":"info"}
+{"message":"logger.test.js# Test warn","level":"warn"}
+{"data":[{"productName":"samosa","shopName":"Samosa Factory","price":1,"geo":{"lat":-33.87365,"long":151.20689}},{"productName":"samosa","shopName":"Jerusalem Shawarma","price":1.25,"geo":{"lat":-33.89365,"long":151.21689}},{"productName":"samosa","shopName":"Chickenclear Shawarma","price":1.3,"geo":{"lat":-33.97365,"long":151.28689}}],"level":"db","message":"logger.test.js# Test db"}
+{"small":"NOT Fat Guy","level":"error","message":"logger.test.js# Test error"}
+{"message":"logger.test.js# Test info","level":"info"}
+{"message":"logger.test.js# Test warn","level":"warn"}
+{"data":[{"productName":"samosa","shopName":"Samosa Factory","price":1,"geo":{"lat":-33.87365,"long":151.20689}},{"productName":"samosa","shopName":"Jerusalem Shawarma","price":1.25,"geo":{"lat":-33.89365,"long":151.21689}},{"productName":"samosa","shopName":"Chickenclear Shawarma","price":1.3,"geo":{"lat":-33.97365,"long":151.28689}}],"level":"db","message":"logger.test.js# Test db"}
+{"small":"NOT Fat Guy","level":"error","message":"logger.test.js# Test error"}
+{"message":"logger.test.js# Test info","level":"info"}
+{"message":"logger.test.js# Test warn","level":"warn"}
+{"data":[{"productName":"samosa","shopName":"Samosa Factory","price":1,"geo":{"lat":-33.87365,"long":151.20689}},{"productName":"samosa","shopName":"Jerusalem Shawarma","price":1.25,"geo":{"lat":-33.89365,"long":151.21689}},{"productName":"samosa","shopName":"Chickenclear Shawarma","price":1.3,"geo":{"lat":-33.97365,"long":151.28689}}],"level":"db","message":"logger.test.js# Test db"}
+{"small":"NOT Fat Guy","level":"error","message":"logger.test.js# Test error"}
+{"message":"logger.test.js# Test info","level":"info"}
+{"message":"logger.test.js# Test warn","level":"warn"}
+{"data":[{"productName":"samosa","shopName":"Samosa Factory","price":1,"geo":{"lat":-33.87365,"long":151.20689}},{"productName":"samosa","shopName":"Jerusalem Shawarma","price":1.25,"geo":{"lat":-33.89365,"long":151.21689}},{"productName":"samosa","shopName":"Chickenclear Shawarma","price":1.3,"geo":{"lat":-33.97365,"long":151.28689}}],"level":"db","message":"logger.test.js# Test db"}
+{"small":"NOT Fat Guy","level":"error","message":"logger.test.js# Test error"}
+{"message":"logger.test.js# Test info","level":"info"}
+{"message":"logger.test.js# Test warn","level":"warn"}
+{"data":[{"productName":"samosa","shopName":"Samosa Factory","price":1,"geo":{"lat":-33.87365,"long":151.20689}},{"productName":"samosa","shopName":"Jerusalem Shawarma","price":1.25,"geo":{"lat":-33.89365,"long":151.21689}},{"productName":"samosa","shopName":"Chickenclear Shawarma","price":1.3,"geo":{"lat":-33.97365,"long":151.28689}}],"level":"db","message":"logger.test.js# Test db"}
+{"small":"NOT Fat Guy","level":"error","message":"logger.test.js# Test error"}
+{"message":"logger.test.js# Test info","level":"info"}
+{"message":"logger.test.js# Test warn","level":"warn"}
+{"data":[{"productName":"samosa","shopName":"Samosa Factory","price":1,"geo":{"lat":-33.87365,"long":151.20689}},{"productName":"samosa","shopName":"Jerusalem Shawarma","price":1.25,"geo":{"lat":-33.89365,"long":151.21689}},{"productName":"samosa","shopName":"Chickenclear Shawarma","price":1.3,"geo":{"lat":-33.97365,"long":151.28689}}],"level":"db","message":"logger.test.js# Test db"}
+{"small":"NOT Fat Guy","level":"error","message":"logger.test.js# Test error"}
