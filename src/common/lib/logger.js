@@ -44,7 +44,11 @@ const myCustomLevels = {
 const Logger = winston.createLogger({
     levels: myCustomLevels.levels,
     // level: 'info',
-    format: winston.format.json(),
+    // format: winston.format.json(),
+    format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json()
+    ),
     // defaultMeta: { service: 'user-service' },
     transports: [
         //
@@ -60,8 +64,8 @@ const Logger = winston.createLogger({
             host: '127.0.0.1:8091',
             expiry: 0
         }),
-        new winston.transports.File({ filename: logErrorFile, level: 'error' }),
-        new winston.transports.File({ filename: 'combined.log' })
+        // new winston.transports.File({ filename: logErrorFile, level: 'error' }),
+        new (winston.transports.Console)({'timestamp':true})
     ]
 });
 //
@@ -95,8 +99,12 @@ module.exports = (fileName) => {
         warn: (text) => {
             Logger.warn(fileName + '# ' + text)
         },
-        info: (text) => {
-            Logger.info(fileName + '# ' + text)
+        info: (text, meta) => {
+            if (meta) {
+                Logger.info(fileName + '# ' + text, meta)
+            } else {
+                Logger.info(fileName + '# ' + text)            
+            }
         }
     }
 

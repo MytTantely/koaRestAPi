@@ -22,14 +22,23 @@ router.post('/products', async (ctx, next) => {
         msg = 'Some unexpected structure'
     }
 
-    // console.log(payload) //FIXME logger
-    const service = new ProductsService()
-    await service.saveAll(payload)
+    try {
+        const service = new ProductsService()
+        await service.saveAll(payload)
 
-    ctx.status = defs.httpStatus.Created
-    ctx.body = {
-        message: msg
+        ctx.status = defs.httpStatus.Created
+        ctx.body = {
+            message: msg
+        }
+    } catch (error) {
+        ctx.status = defs.httpStatus.BadRequest
+        ctx.body = {
+            message : error.message
+        }
     }
+
+
+    
 })
 
 /**
