@@ -5,6 +5,8 @@ const koaLogger = require('koa-logger')
 const cors = require('koa2-cors')
 
 const products = require('./routes/products')
+const category = require('./routes/category')
+
 
 // init
 const app = new Koa()
@@ -26,7 +28,8 @@ app.use(cors({
   }))
 
   app.use(products)
-
+  app.use(category)
+  
   app.on('error', (err, ctx) => {
     console.error('server error', err, ctx)
   
