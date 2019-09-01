@@ -1,8 +1,8 @@
 {
-  "name": "koarestapi",
+  "name": "shoppy-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.js",
+  "main": "src/api.js",
   "scripts": {
     "start": "node bin/www.js",
     "test": "echo \"Error: no test specified\" && exit 1"
