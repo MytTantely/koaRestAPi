@@ -3,7 +3,7 @@ const CATEGORY_PRODUCT = {
     fruit : {
         juice: 'juice',
         puree: 'puree',
-        sauce: 'sauce', // compote
+        sauce: 'sauce',
         real: 'fruit',
         dried: 'dried',
         sliced: 'sliced',
@@ -69,6 +69,7 @@ class ParseItem {
 
     async _getCategory(label, category) {
         for (const cat in CATEGORY_PRODUCT[category]) {
+            // const subCat = CATEGORY_PRODUCT[category][cat]
             if (label.includes(cat)) {
                 return cat
             }
