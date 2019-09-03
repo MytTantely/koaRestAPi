@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const listFruitsPath = path.join(__dirname, '..', 'misc', 'list-fruits.txt')
+const listFruitsPath = path.join(__dirname, '..', 'misc', 'apple-fruits-walmart.txt')
 
 const listFruits = fs.readFileSync(listFruitsPath, 'utf8')
 const fruits = listFruits.split('\n')
@@ -12,5 +12,5 @@ for(const fruit of fruits) {
     fruitsJson.push(fruit)
 }
 
-const listFruitsPathJSON = path.join(__dirname, '..', 'misc', 'list-fruits.json')
+const listFruitsPathJSON = path.join(__dirname, '..', 'misc', 'apple-fruits-walmart.json')
 fs.writeFileSync(listFruitsPathJSON, JSON.stringify(fruitsJson))

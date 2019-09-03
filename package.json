@@ -21,6 +21,7 @@
     "koa2-cors": "2.0.6",
     "merge": "^1.2.1",
     "path": "^0.12.7",
+    "pluralize": "^8.0.0",
     "winston": "^3.2.1",
     "winston-couchbase-2": "^1.0.0"
   }
