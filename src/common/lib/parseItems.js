@@ -4,7 +4,7 @@ const CATEGORY_PRODUCT = {
         juice: 'juice',
         puree: 'puree',
         sauce: 'sauce',
-        real: 'fruit',
+        freezeDried: 'freeze dried',
         dried: 'dried',
         sliced: 'sliced',
         chips: 'chips',
@@ -26,7 +26,7 @@ class ParseItem {
      */
     async parse(label, keyword, category) {
 
-        console.log(`= = = = = =\nProcessing ${label}...`)
+        console.log(`= = = = = =\nProcessing ${label}...`) // FIXME debug mode logger
         // FIXME, will use JOI or JSON Schema
         if (!label && !keyword && !category) {
             throw new Error('Missing parameters')
@@ -69,9 +69,9 @@ class ParseItem {
 
     async _getCategory(label, category) {
         for (const cat in CATEGORY_PRODUCT[category]) {
-            // const subCat = CATEGORY_PRODUCT[category][cat]
-            if (label.includes(cat)) {
-                return cat
+            const subCat = CATEGORY_PRODUCT[category][cat]
+            if (label.includes(subCat)) {
+                return subCat
             }
         }
         return undefined
