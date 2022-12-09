@@ -15,7 +15,7 @@
     "bluebird": "^3.5.3",
     "couchbase": "^2.6.1",
     "etag": "^1.8.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "koa": "^2.6.1",
     "koa-body": "^4.0.4",
     "koa-cache-control": "^2.0.0",
